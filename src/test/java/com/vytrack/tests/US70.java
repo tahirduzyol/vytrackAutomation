@@ -17,7 +17,7 @@ public class US70 {
     @BeforeMethod
     public void setupMethod() {
 
-        driver = Driver.getDriver(ConfigurationReader.getProperty("browser"));
+        driver = Driver.getDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfigurationReader.getProperty("env"));

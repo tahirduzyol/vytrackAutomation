@@ -28,8 +28,6 @@ public class US70 {
     public void verify() {
         //Go to : login page
 
-        //Calling login utility method to login
-
         BrowserUtils.sleep(3);
     }
 

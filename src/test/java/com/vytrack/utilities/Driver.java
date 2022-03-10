@@ -63,5 +63,11 @@ public class Driver {
     //driver.quit() --> nosuchsession
     //driver.close() -->
     //try to create a method named closeDriver
+    public static void closeDriver(){
+        if(driver!=null){
+            driver.quit();//this line will terminate te excisting session. value will not even be null
+            driver = null;
+        }
+    }
 
 }

@@ -28,7 +28,7 @@ public class Login_Utilities {
         loginButton.click();
     }
 
-    public static void login(WebDriver driver, String username, String password){
+    public static void login_store_manager(WebDriver driver, String username, String password){
         //3. Enter valid username
         WebElement inputUsername = driver.findElement(By.xpath("//input[@name='USER_LOGIN']"));
         inputUsername.sendKeys(username);

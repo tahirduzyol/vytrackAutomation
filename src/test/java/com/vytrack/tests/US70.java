@@ -39,7 +39,12 @@ public class US70 {
 
         BrowserUtils.sleep(2);
 
-        //WebElement vehiclesModelLink = driver.findElement(By.xpath("//span[@class='title title-level-1']"));
+        WebElement vehiclesModelLink = driver.findElement(By.linkText("Vehicles Model"));
+        vehiclesModelLink.click();
+
+        WebElement warningMessage = driver.findElement(By.xpath("//div[.='You do not have permission to perform this action.']"));
+
+        Assert.assertTrue(warningMessage.isDisplayed());
 
     }
 

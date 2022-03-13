@@ -22,13 +22,14 @@ public class US67_AccessOroincDocumentationPage_Kseniia {
 
         //3.Driver switch to new window
         //verify URl https://doc.oroinc.com/
-        for(String each: Driver.getDriver().getWindowHandles()){
+        for (String each : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(each);
 
         }
         Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://doc.oroinc.com/");
-
+        Driver.closeDriver();
     }
+
     @Test
     public void oro_documentation_page_access_verification_as_salesManager() {
         //AC #1: users access the Oronic Documentation page by clicking the question icon.
@@ -43,13 +44,13 @@ public class US67_AccessOroincDocumentationPage_Kseniia {
 
         //3.Sales manager switch to new window
         //verify URl https://doc.oroinc.com/
-        for(String each: Driver.getDriver().getWindowHandles()){
+        for (String each : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(each);
             //System.out.println(Driver.getDriver().getWindowHandle());
         }
 
         Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://doc.oroinc.com/");
-
+        Driver.closeDriver();
     }
 
     @Test
@@ -68,12 +69,12 @@ public class US67_AccessOroincDocumentationPage_Kseniia {
 
         //3.Store manager switch to new window
         //verify URl https://doc.oroinc.com/
-        for(String each: Driver.getDriver().getWindowHandles()){
+        for (String each : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(each);
             //System.out.println(Driver.getDriver().getWindowHandle());
         }
 
         Assert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://doc.oroinc.com/");
-
+        Driver.closeDriver();
     }
 }

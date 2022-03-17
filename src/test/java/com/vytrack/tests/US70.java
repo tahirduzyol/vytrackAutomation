@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.reporters.jq.Model;
 
@@ -19,6 +20,7 @@ public class US70 {
 
     @BeforeMethod
     public void setupMethod() {
+        BrowserUtils.sleep(5);
 
         driver = Driver.getDriver();
         driver.manage().window().maximize();
@@ -33,19 +35,21 @@ public class US70 {
         //users should see “You do not have permission to perform this action.”
 
         //Go to : login page, use driver login credentials
-        VytrackUtils.login("user12", "UserUser123");
+        //VytrackUtils.login("user12", "UserUser123");
+        VytrackUtils.login(ConfigurationReader.getProperty("driver_username"), ConfigurationReader.getProperty("driver_password"));
         BrowserUtils.sleep(3);
+        //BrowserUtils.sleep(5);
 
         //locate Fleet link
         WebElement fleetLink = driver.findElement(By.xpath("//span[@class='title title-level-1']"));
 
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(5);
 
         //hover over Fleet link
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(fleetLink).perform();
 
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(5);
 
         //locate Vehicles Model link and click
         WebElement vehiclesModelLink = driver.findElement(By.linkText("Vehicles Model"));
@@ -68,6 +72,10 @@ public class US70 {
         VytrackUtils.login(ConfigurationReader.getProperty("store_manager_username"), ConfigurationReader.getProperty("store_manager_password"));
         BrowserUtils.sleep(3);
 
+        //Go to : login page, use driver login credentials
+        //VytrackUtils.login("storemanager63", "UserUser123");
+        //BrowserUtils.sleep(5);
+
         //locate Fleet link
         WebElement fleetLink = driver.findElement(By.xpath("(//span[@class='title title-level-1'])[2]"));
 
@@ -77,17 +85,73 @@ public class US70 {
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(fleetLink).perform();
 
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(5);
 
         //locate Vehicles Model link and click
         WebElement vehiclesModelLink = driver.findElement(By.linkText("Vehicles Model"));
         vehiclesModelLink.click();
 
+        BrowserUtils.sleep(5);
+
+        WebElement vehicleModelsTableHeading1 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-ModelName sortable renderable shortenable-label string-cell']"));
+        String actualVehicleModelsTableHeading1Text = vehicleModelsTableHeading1.getText();
+        String expectedVehicleModelsTableHeading1Text = "MODEL NAME";
+
+        WebElement vehicleModelsTableHeading2 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-Make sortable renderable shortenable-label string-cell']"));
+        String actualVehicleModelsTableHeading2Text = vehicleModelsTableHeading2.getText();
+        String expectedVehicleModelsTableHeading2Text = "MAKE";
+
+        WebElement vehicleModelsTableHeading3 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-Canberequested sortable renderable shortenable-label boolean-cell']"));
+        String actualVehicleModelsTableHeading3Text = vehicleModelsTableHeading3.getText();
+        String expectedVehicleModelsTableHeading3Text = "CAN BE REQUESTED";
+
+        WebElement vehicleModelsTableHeading4 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-CatalogValue sortable renderable number-cell']"));
+        String actualVehicleModelsTableHeading4Text = vehicleModelsTableHeading4.getText();
+        String expectedVehicleModelsTableHeading4Text = "CVVI";
+
+        WebElement vehicleModelsTableHeading5 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-CO2Fee sortable renderable shortenable-label number-cell']"));
+        String actualVehicleModelsTableHeading5Text = vehicleModelsTableHeading5.getText();
+        String expectedVehicleModelsTableHeading5Text = "CO2 FEE (/MONTH)";
+
+        WebElement vehicleModelsTableHeading6 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-Cost sortable renderable shortenable-label number-cell']"));
+        String actualVehicleModelsTableHeading6Text = vehicleModelsTableHeading6.getText();
+        String expectedVehicleModelsTableHeading6Text = "COST (DEPRECIATED)";
+
+        WebElement vehicleModelsTableHeading7 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-TotalCost sortable renderable shortenable-label number-cell']"));
+        String actualVehicleModelsTableHeading7Text = vehicleModelsTableHeading7.getText();
+        String expectedVehicleModelsTableHeading7Text = "TOTAL COST (DEPRECIATED)";
+
+        WebElement vehicleModelsTableHeading8 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-CO2Emissions sortable renderable shortenable-label number-cell']"));
+        String actualVehicleModelsTableHeading8Text = vehicleModelsTableHeading8.getText();
+        String expectedVehicleModelsTableHeading8Text = "CO2 EMISSIONS";
+
+        WebElement vehicleModelsTableHeading9 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-FuelType sortable renderable shortenable-label string-cell']"));
+        String actualVehicleModelsTableHeading9Text = vehicleModelsTableHeading9.getText();
+        String expectedVehicleModelsTableHeading9Text = "FUEL TYPE";
+
+        WebElement vehicleModelsTableHeading10 = driver.findElement(By.xpath("//th[@class='grid-cell grid-header-cell grid-header-cell-Vendors sortable renderable shortenable-label string-cell']"));
+        String actualVehicleModelsTableHeading10Text = vehicleModelsTableHeading10.getText();
+        String expectedVehicleModelsTableHeading10Text = "VENDORS";
+
+
+        Assert.assertTrue(actualVehicleModelsTableHeading1Text.equals(expectedVehicleModelsTableHeading1Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading2Text.equals(expectedVehicleModelsTableHeading2Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading3Text.equals(expectedVehicleModelsTableHeading3Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading4Text.equals(expectedVehicleModelsTableHeading4Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading5Text.equals(expectedVehicleModelsTableHeading5Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading6Text.equals(expectedVehicleModelsTableHeading6Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading7Text.equals(expectedVehicleModelsTableHeading7Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading8Text.equals(expectedVehicleModelsTableHeading8Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading9Text.equals(expectedVehicleModelsTableHeading9Text));
+        Assert.assertTrue(actualVehicleModelsTableHeading10Text.equals(expectedVehicleModelsTableHeading10Text));
+
+
+
     }
 
     @AfterMethod
     public void tearDown() {
-        BrowserUtils.sleep(3);
+        BrowserUtils.sleep(5);
         driver.close();
     }
 

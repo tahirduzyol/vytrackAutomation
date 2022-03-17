@@ -238,7 +238,6 @@ public class US70 {
 }
 
 /*
-
 User Story
 
 As a user, I want to view columns on the Vehicle models page.(web-table)
